@@ -1,0 +1,612 @@
+:root {
+  color-scheme: light;
+  --ink: #17212b;
+  --muted: #68717d;
+  --line: #dfe6e3;
+  --paper: #fbfaf6;
+  --panel: #ffffff;
+  --mint: #2fbf9b;
+  --blue: #5271ff;
+  --coral: #f59e62;
+  --gold: #e8c547;
+  --rose: #ee6b6e;
+  --shadow: 0 18px 45px rgba(23, 33, 43, 0.08);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(47, 191, 155, 0.1), transparent 34%),
+    linear-gradient(315deg, rgba(245, 158, 98, 0.13), transparent 38%),
+    var(--paper);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.appShell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 24px 18px;
+  background: #11202a;
+  color: #f6f5ee;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--mint);
+  color: #09251f;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand small {
+  color: #aebec5;
+  margin-top: 2px;
+}
+
+.navList {
+  display: grid;
+  gap: 8px;
+}
+
+.navList button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  color: #d9e5e3;
+  background: transparent;
+  padding: 0 12px;
+  text-align: left;
+}
+
+.navList button:hover,
+.navList button.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.workspace {
+  padding: 28px;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  letter-spacing: 0;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: min(420px, 100%);
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 0 14px;
+  box-shadow: var(--shadow);
+}
+
+.searchBox input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.notice {
+  margin-bottom: 16px;
+  border: 1px solid #bfe8dc;
+  border-radius: 8px;
+  background: #e8fbf5;
+  color: #13594a;
+  padding: 10px 14px;
+}
+
+.emptyState,
+.panel,
+.formPanel,
+.projectCard,
+.lane,
+.dateRow,
+.personCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow);
+}
+
+.pageGrid {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric {
+  min-height: 118px;
+  min-width: 0;
+  border-radius: 8px;
+  padding: 18px;
+  color: #102028;
+  border: 1px solid rgba(23, 33, 43, 0.08);
+}
+
+.metric span {
+  display: block;
+  color: rgba(16, 32, 40, 0.72);
+  font-weight: 700;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 16px;
+  font-size: 2.25rem;
+}
+
+.metric.green { background: #dff7ef; }
+.metric.blue { background: #e4e9ff; }
+.metric.amber { background: #fff3c7; }
+.metric.rose { background: #ffe4e4; }
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: 22px;
+}
+
+.panel,
+.formPanel {
+  padding: 20px;
+  min-width: 0;
+}
+
+.panelTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.panelTitle h2,
+.formPanel h2,
+.lane h2 {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+}
+
+.projectStack {
+  display: grid;
+  gap: 12px;
+}
+
+.projectRow {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(130px, 0.8fr) 48px;
+  align-items: center;
+  gap: 14px;
+  min-height: 58px;
+  min-width: 0;
+}
+
+.projectRow span {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.projectRow.compact {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.progressTrack {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #edf1ef;
+}
+
+.progressTrack span {
+  display: block;
+  height: 100%;
+  min-width: 4px;
+  border-radius: inherit;
+  background: var(--mint);
+}
+
+.timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.timeline article {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 12px;
+}
+
+.timeline p,
+.projectCard p,
+.taskCard p,
+.dateRow p,
+.personCard p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.dot.doing { background: var(--blue); }
+.dot.done { background: var(--mint); }
+
+.projectBoard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.projectCard {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.cardRibbon {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6px;
+  background: var(--accent);
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 118px;
+}
+
+.projectHeader h2 {
+  font-size: 1.18rem;
+  margin-bottom: 8px;
+}
+
+.chip,
+.label,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: #edf5f2;
+  color: #21473e;
+  font-weight: 800;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0 0;
+}
+
+.detailsGrid dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.detailsGrid dd {
+  margin: 4px 0 0;
+  font-weight: 800;
+}
+
+.formPanel {
+  display: grid;
+  gap: 12px;
+  align-self: start;
+}
+
+.formPanel input,
+.formPanel select,
+.formPanel textarea,
+.taskCard select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0 12px;
+  color: var(--ink);
+}
+
+.formPanel textarea {
+  min-height: 96px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+.formPanel button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  color: #081814;
+  background: var(--mint);
+  font-weight: 900;
+}
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.lane {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 14px;
+  min-height: 420px;
+  min-width: 0;
+}
+
+.taskCard {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 14px;
+}
+
+.taskCard h3 {
+  margin: 8px 0 6px;
+  font-size: 1rem;
+}
+
+.taskMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.calendarList,
+.teamGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.dateRow {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+}
+
+.dateRow time {
+  display: grid;
+  place-items: center;
+  min-height: 64px;
+  border-radius: 8px;
+  background: #11202a;
+  color: #fff;
+}
+
+.dateRow time strong {
+  font-size: 1.4rem;
+}
+
+.dateRow h2 {
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.pill.danger {
+  color: #7c1d24;
+  background: #ffe4e4;
+}
+
+.teamGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.personCard {
+  padding: 18px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: #11202a;
+  color: #fff;
+  font-weight: 900;
+}
+
+.reportBars {
+  display: grid;
+  gap: 16px;
+}
+
+.reportBars > div {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.35fr) 1fr 48px;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (max-width: 1050px) {
+  .appShell {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .brand div,
+  .navList span {
+    display: none;
+  }
+
+  .metricGrid,
+  .projectBoard,
+  .kanban,
+  .teamGrid,
+  .splitGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .appShell {
+    display: block;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 14px;
+  }
+
+  .brand {
+    margin-bottom: 12px;
+  }
+
+  .brand div,
+  .navList span {
+    display: block;
+  }
+
+  .navList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .navList button {
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  .workspace {
+    padding: 18px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .metricGrid,
+  .projectBoard,
+  .kanban,
+  .teamGrid,
+  .splitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dateRow {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .dateRow .pill {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .projectRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .reportBars > div {
+    grid-template-columns: 1fr;
+  }
+}
